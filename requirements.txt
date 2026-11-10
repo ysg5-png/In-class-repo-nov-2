@@ -1,0 +1,9 @@
+# We will use pytest to test our program
+
+pytest
+
+
+
+# you might need these for the optional bonus:
+# pandas
+# plotly
