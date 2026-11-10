@@ -1,5 +1,3 @@
-some instructions here
-
 1. Clone [the repo](https://github.com/s2t2/my-first-app-fall-2026) from GitHub, and put it somewhere (like your Desktop).
 2. Navigate to the local repo from the command line (for example if on your desktop):
 

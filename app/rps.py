@@ -5,7 +5,6 @@ import random
 
 # 2. FOLLOWED BY ANY CONSTANTS
 VALID_OPTIONS = ["rock", "paper", "scissors"]
-
 # 3. FUNCTIONS OR CLASSES
 
 def determine_winner(u, c):
