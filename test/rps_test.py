@@ -3,7 +3,10 @@
 
 from app.rps import determine_winner
 
+def test_example():
+    assert 2 + 2 == 4
 
+    
 def test_winners():
     # tests for all edge cases:
 
