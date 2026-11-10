@@ -1,9 +1,9 @@
-# We will use pytest to test our program
+# this is the "requirements.txt" file...
 
+# stocks:
+pandas
+python-dotenv
+plotly
+
+# testing:
 pytest
-
-
-
-# you might need these for the optional bonus:
-# pandas
-# plotly
