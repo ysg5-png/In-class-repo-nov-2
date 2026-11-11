@@ -42,8 +42,6 @@ jobs:
         python -c "import os; print('API key present:', bool(os.getenv('ALPHAVANTAGE_API_KEY')))"
 
 
-
-
     - name: Test with pytest
       env:
         ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
