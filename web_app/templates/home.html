@@ -1,27 +1,95 @@
 {% extends "bootstrap_5_layout.html" %}
 {% set active_page = "home" %}
 
+{% block title %}Home | My Web App{% endblock %}
+
 {% block content %}
 
-    <h1>Welcome Home</h1>
+<section class="p-4 p-md-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <div class="py-2">
+        <h1 class="display-5 fw-bold mb-3">Welcome Home</h1>
+        <p class="col-lg-8 fs-5 text-body-secondary mb-4">
+            Explore real-time stock market trends, challenge the computer in Rock Paper Scissors, and test out interactive Flask routes styled with Bootstrap 5.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="/stocks/form" class="btn btn-success btn-lg">
+                <i class="bi bi-graph-up-arrow me-2"></i>Stocks Lookup
+            </a>
+            <a href="/rps/form" class="btn btn-primary btn-lg">
+                <i class="bi bi-controller me-2"></i>Play RPS Game
+            </a>
+        </div>
+    </div>
+</section>
 
-    <p>This is a paragraph on the "home" page.</p>
-
-    <!-- SEE: https://getbootstrap.com/docs/5.2/components/carousel/ -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://image.shutterstock.com/image-photo/business-development-success-growing-growth-600w-748617433.jpg" class="d-block w-100" alt="...">
-            </div>
-
-            <div class="carousel-item">
-                <img src="https://image.shutterstock.com/image-photo/double-exposure-hands-making-notes-600w-1577042437.jpg" class="d-block w-100" alt="...">
-            </div>
-
-            <div class="carousel-item">
-                <img src="https://image.shutterstock.com/image-photo/business-documents-on-office-table-600w-414153883.jpg" class="d-block w-100" alt="...">
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <div class="fs-2 text-success mb-2"><i class="bi bi-bar-chart-line"></i></div>
+                <h2 class="h5 card-title fw-semibold">Stocks Dashboard</h2>
+                <p class="card-text text-body-secondary flex-grow-1">Search any ticker symbol to view the latest closing price and an interactive price chart.</p>
+                <a href="/stocks/form" class="btn btn-outline-success mt-2">Open Stocks Form</a>
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <div class="fs-2 text-primary mb-2"><i class="bi bi-controller"></i></div>
+                <h2 class="h5 card-title fw-semibold">Rock Paper Scissors</h2>
+                <p class="card-text text-body-secondary flex-grow-1">Pick your move and see immediately whether you outsmarted the computer.</p>
+                <a href="/rps/form" class="btn btn-outline-primary mt-2">Play a Round</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex flex-column p-4">
+                <div class="fs-2 text-warning mb-2"><i class="bi bi-chat-dots"></i></div>
+                <h2 class="h5 card-title fw-semibold">Hello &amp; About</h2>
+                <p class="card-text text-body-secondary flex-grow-1">Try out personalized URL greetings or learn more about how this app is structured.</p>
+                <div class="d-flex gap-2 mt-2">
+                    <a href="/hello" class="btn btn-outline-secondary flex-fill">Say Hello</a>
+                    <a href="/about" class="btn btn-outline-secondary flex-fill">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SEE: https://getbootstrap.com/docs/5.3/components/carousel/ -->
+<div class="card shadow-sm border-0 overflow-hidden">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://image.shutterstock.com/image-photo/business-development-success-growing-growth-600w-748617433.jpg" class="d-block w-100 object-fit-cover" style="height: 360px;" alt="Business growth chart">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://image.shutterstock.com/image-photo/double-exposure-hands-making-notes-600w-1577042437.jpg" class="d-block w-100 object-fit-cover" style="height: 360px;" alt="Hands taking notes">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://image.shutterstock.com/image-photo/business-documents-on-office-table-600w-414153883.jpg" class="d-block w-100 object-fit-cover" style="height: 360px;" alt="Business documents on office table">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
 {% endblock %}

@@ -1,13 +1,61 @@
 {% extends "bootstrap_5_layout.html" %}
 {% set active_page = "rps_results" %}
 
+{% block title %}Game Result | My Web App{% endblock %}
+
 {% block content %}
 
-   <h1>Game Result</h1>
-    <p><b>User</b>: {{ user_choice.upper() }}</p>
-    <p><b>Computer</b>: {{ computer_choice.upper() }}</p>
-    <p><b>Outcome</b>: {{ outcome.upper() }}</p>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white py-3">
+                <h1 class="h4 mb-0">
+                    <i class="bi bi-flag-fill me-2 text-warning"></i>Game Result
+                </h1>
+            </div>
+            <div class="card-body p-4">
+                {% if outcome == "USER WINS" %}
+                    {% set banner_class = "alert-success" %}
+                    {% set banner_icon = "bi-trophy-fill" %}
+                {% elif outcome == "COMPUTER WINS" %}
+                    {% set banner_class = "alert-danger" %}
+                    {% set banner_icon = "bi-emoji-frown" %}
+                {% else %}
+                    {% set banner_class = "alert-secondary" %}
+                    {% set banner_icon = "bi-dash-circle" %}
+                {% endif %}
 
-    <a href="/rps/form">Play Again</a>
+                <div class="alert {{ banner_class }} d-flex align-items-center justify-content-center fs-5 fw-semibold mb-4" role="status">
+                    <i class="bi {{ banner_icon }} me-2 fs-4"></i>
+                    <span>{{ outcome.upper() }}</span>
+                </div>
+
+                <div class="row g-3 text-center mb-4">
+                    <div class="col-sm-6">
+                        <div class="bg-body-tertiary rounded-3 p-3 border h-100">
+                            <div class="text-body-secondary small text-uppercase fw-semibold mb-1">Your Move</div>
+                            <div class="fs-4 fw-bold">{{ user_choice.upper() }}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="bg-body-tertiary rounded-3 p-3 border h-100">
+                            <div class="text-body-secondary small text-uppercase fw-semibold mb-1">Computer's Move</div>
+                            <div class="fs-4 fw-bold">{{ computer_choice.upper() }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="/rps/form" class="btn btn-primary btn-lg">
+                        <i class="bi bi-arrow-repeat me-1"></i>Play Again
+                    </a>
+                    <a href="/" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-house me-1"></i>Back Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

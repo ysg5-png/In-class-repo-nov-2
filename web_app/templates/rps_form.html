@@ -1,19 +1,41 @@
 {% extends "bootstrap_5_layout.html" %}
 {% set active_page = "rps_form" %}
 
+{% block title %}Rock Paper Scissors | My Web App{% endblock %}
+
 {% block content %}
 
-    <h1>Rock Paper Scissors Game</h1>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white py-3">
+                <h1 class="h4 mb-0">
+                    <i class="bi bi-controller me-2 text-warning"></i>Rock Paper Scissors
+                </h1>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-body-secondary mb-4">Pick your move below and test your luck against the computer.</p>
 
-    <form action="/rps/results" method="POST">
-        <label for="user_choice">Choose your move:</label>
-        <select name="user_choice" class="form-select" aria-label="Default select example">
-            <option value="rock">Rock</option>
-            <option value="paper">Paper</option>
-            <option value="scissors">Scissors</option>
-        </select>
+                <form action="/rps/results" method="POST">
+                    <div class="mb-4">
+                        <label for="user_choice" class="form-label fw-semibold">Choose Your Move</label>
+                        <select id="user_choice" name="user_choice" class="form-select form-select-lg" aria-label="Choose your move">
+                            <option value="rock">Rock</option>
+                            <option value="paper">Paper</option>
+                            <option value="scissors">Scissors</option>
+                        </select>
+                        <div class="form-text">Rock beats Scissors, Scissors beats Paper, and Paper beats Rock.</div>
+                    </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-play-fill me-1"></i>Play Round
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

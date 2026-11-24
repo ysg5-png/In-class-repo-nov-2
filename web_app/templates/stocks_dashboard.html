@@ -1,0 +1,88 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "stocks_dashboard" %}
+
+{% block title %}Stocks Dashboard ({{ symbol }}) | My Web App{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+    <h1 class="h2 mb-0">
+        Stocks Dashboard
+        <span class="badge bg-dark ms-1">{{ symbol }}</span>
+    </h1>
+    <a href="/stocks/form" class="btn btn-outline-secondary">
+        <i class="bi bi-search me-1"></i>Search Another Stock
+    </a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <div class="text-body-secondary small text-uppercase fw-semibold mb-1">Ticker Symbol</div>
+                <div class="fs-3 fw-bold">{{ symbol }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <div class="text-body-secondary small text-uppercase fw-semibold mb-1">Latest Close</div>
+                <div class="fs-3 fw-bold text-success">{{ latest_close_usd }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <div class="text-body-secondary small text-uppercase fw-semibold mb-1">As Of Date</div>
+                <div class="fs-3 fw-bold">{{ latest_date }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-3 p-md-4">
+        <div id="chart-container" style="min-height: 550px;"></div>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+
+    console.log("STOCKS DASHBOARD...")
+
+    // use data from the router!
+    var symbol = '{{ symbol }}'
+    //var stockData = JSON.parse('{{ data }}')
+    //var stockData = '{{ data }}'
+    var stockData = JSON.parse('{{data | tojson}}') // https://stackoverflow.com/a/45132694/670433
+    console.log(stockData)
+
+    //var tsd = stockData["Time Series (Daily)"]
+    //var dates = Object.keys(tsd)
+    //var dailyPrices = Object.values(tsd)
+    var dates = stockData.map(obj => obj["timestamp"])
+    var closingPrices = stockData.map(obj => obj["adjusted_close"])
+
+    // visualize the data
+    // see: https://plotly.com/javascript/line-charts/
+    var series = {
+        x: dates,
+        y: closingPrices,
+        mode: "lines+markers"
+    }
+    var data = [series]
+    var layout = {
+        title: "Daily Closing Prices for Stock: " + symbol,
+        height: 600,
+        yaxis: {
+            tickformat: '$' // https://plotly.com/javascript/tick-formatting/
+        }
+    }
+    Plotly.newPlot("chart-container", data, layout, { responsive: true })
+
+</script>
+
+{% endblock %}

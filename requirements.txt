@@ -1,13 +1,18 @@
-# this is the "requirements.txt" file...
+
+
 
 # stocks:
-# pandas
-# python-dotenv
-# plotly
+pandas
+python-dotenv
+plotly
 
 # testing:
 pytest
 
 
-#web app 
+# web app:
 flask
+
+
+# production server:
+gunicorn

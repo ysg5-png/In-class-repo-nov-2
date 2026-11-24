@@ -1,12 +1,38 @@
 {% extends "bootstrap_5_layout.html" %}
 {% set active_page = "hello" %}
 
+{% block title %}Hello | My Web App{% endblock %}
+
 {% block content %}
 
-    <h1>{{ message }}</h1>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white py-3">
+                <h1 class="h4 mb-0">
+                    <i class="bi bi-hand-wave me-2 text-warning"></i>{{ message }}
+                </h1>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-body-secondary mb-3">
+                    This is a variable: <span class="badge bg-secondary">{{ x }}</span>
+                </p>
+                <p class="text-body-secondary mb-4">
+                    Enter a name below to personalize the greeting via URL query parameters.
+                </p>
 
-    <p>This is a variable: {{ x }} </p>
-
-    <p>This is a paragraph on the "hello" page.</p>
+                <form action="/hello" method="GET">
+                    <label for="name" class="form-label fw-semibold">Your Name</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Harper">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send me-1"></i>Greet Me
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
